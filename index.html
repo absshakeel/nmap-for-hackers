@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nmap for Hackers and Ethical Security Professionals | Nmap Command Builder, Cheat Sheet & Labs</title>
+  <meta name="description" content="Learn Nmap for hackers and ethical security professionals with an interactive command builder, unified command reference, port scanning examples, output analyzer, labs, quizzes, and network visualizations. Practice Nmap concepts ethically on authorized systems.">
+  <meta name="keywords" content="Nmap for hackers, Nmap tutorial, Nmap command builder, Nmap cheat sheet, Nmap commands, port scanning, network discovery, ethical hacking, cybersecurity labs, Zero Trust Academy">
+  <meta name="author" content="ABS Shakeel (absshakeel.com), Zero Trust Academy">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Nmap for Hackers and Ethical Security Professionals">
+  <meta property="og:description" content="Interactive Nmap learning platform with command builder, unified command reference, labs, quizzes, and simulated scan analysis.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/hero-network-defense.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nmap for Hackers and Ethical Security Professionals">
+  <meta name="twitter:description" content="Master Nmap with interactive tools, command reference, labs, and ethical security training.">
+  <meta name="twitter:image" content="assets/images/hero-network-defense.svg">
+  <link rel="icon" type="image/png" href="assets/images/nmap-logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Primary">
+      <div class="sidebar-brand">
+        <div class="brand-mark brand-mark-logo" aria-hidden="true">
+          <img src="assets/images/zta-logo.jpg" alt="" class="brand-logo-img">
+        </div>
+        <div>
+          <div class="brand-title">Zero Trust Academy</div>
+          <div class="brand-subtitle">Nmap Learning Platform</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#fundamentals" class="nav-link">Fundamentals</a>
+        <a href="#command-builder" class="nav-link">Command Builder</a>
+        <a href="#command-reference" class="nav-link">Command Reference</a>
+        <a href="#output-analyzer" class="nav-link">Output Analyzer</a>
+        <a href="#visualizer" class="nav-link">Network Visualizer</a>
+        <a href="#labs" class="nav-link">Labs</a>
+        <a href="#quiz" class="nav-link">Quiz</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="progress-widget">
+          <div class="progress-label">Learning Progress</div>
+          <div class="progress-bar"><span id="global-progress-bar"></span></div>
+          <div class="progress-meta"><span id="global-progress-text">0%</span> complete</div>
+        </div>
+        <a href="https://www.youtube.com/@zerotrust.academy" target="_blank" rel="noopener noreferrer" class="sidebar-link">YouTube: @zerotrust.academy</a>
+        <div class="sidebar-credit">Developed by <a href="https://absshakeel.com" target="_blank" rel="noopener noreferrer">ABS Shakeel</a></div>
+      </div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <button class="icon-btn" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" id="global-search" placeholder="Search commands, labs, concepts..." aria-label="Global search">
+          <div id="search-results" class="search-results" role="listbox" aria-label="Search results"></div>
+        </div>
+        <div class="topbar-actions">
+          <a class="icon-btn" href="https://www.youtube.com/@zerotrust.academy" target="_blank" rel="noopener noreferrer" title="Zero Trust Academy on YouTube" aria-label="Zero Trust Academy on YouTube">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5v-7l6.3 3.5-6.3 3.5z"/></svg>
+          </a>
+          <button class="icon-btn" id="bookmarks-toggle" title="Bookmarked commands" aria-label="Bookmarked commands">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main id="main">
+        <section id="hero" class="section hero">
+          <div class="hero-grid hero-grid-pro">
+            <div class="hero-copy">
+              <div class="eyebrow">Zero Trust Academy &bull; Developed by <a href="https://absshakeel.com" target="_blank" rel="noopener noreferrer">ABS Shakeel</a></div>
+              <h1>Nmap for Hackers and Ethical Security Professionals</h1>
+              <p class="subtitle">Learn Nmap the practical way — build commands, understand scans, analyze simulated output, and practice in labs. Designed for authorized, ethical security learning.</p>
+              <div class="hero-actions">
+                <a href="#fundamentals" class="btn btn-primary">Start Learning</a>
+                <a href="#command-builder" class="btn btn-secondary">Open Command Builder</a>
+                <a href="https://www.youtube.com/@zerotrust.academy" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Watch on YouTube</a>
+              </div>
+              <ul class="hero-points" aria-label="Key features">
+                <li>Interactive command builder with clear explanations</li>
+                <li>Unified command reference and cheat sheet</li>
+                <li>Labs, quizzes, and simulated output analysis</li>
+              </ul>
+              <div class="notice notice-warning" role="note">
+                <strong>Authorization Notice:</strong> Use Nmap only on systems you own or have explicit permission to assess. This site explains and generates commands; it does not run scans.
+              </div>
+            </div>
+            <div class="hero-visual hero-visual-pro">
+              <figure class="card hero-banner hero-banner-main">
+                <img src="assets/images/zta-banner.png" alt="Zero Trust Academy banner for Nmap for Hackers and Ethical Security Professionals">
+              </figure>
+              <div class="terminal-card card" aria-label="Sample Nmap commands">
+                <div class="terminal-header"><span></span><span></span><span></span> sample-terminal</div>
+                <pre class="terminal-body" id="hero-terminal"><code></code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="fundamentals" class="section">
+          <div class="section-head">
+            <h2>Nmap Fundamentals</h2>
+            <p>Learn the Nmap workflow step by step. Select a stage to see what it does, why it matters, and common commands.</p>
+          </div>
+          <div class="fundamentals-layout">
+            <div class="stages-grid" id="stages-grid"></div>
+            <div class="stage-detail card" id="stage-detail" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section id="command-builder" class="section">
+          <div class="section-head">
+            <h2>Interactive Nmap Command Builder</h2>
+            <p>Build Nmap commands step by step with a clean, guided interface. Use quick presets or customize options — the command, explanation, and validation update in real time. <strong>Commands are generated only</strong> and never executed.</p>
+          </div>
+          <div class="builder-layout">
+            <div class="builder-options" id="builder-options">
+              <div class="builder-group card builder-quickstart">
+                <div class="builder-quickstart-head">
+                  <div>
+                    <h3>Quick Start</h3>
+                    <p class="muted small">Choose a preset to configure common options quickly, then adjust as needed.</p>
+                  </div>
+                  <label class="check builder-mode-toggle"><input type="checkbox" id="builder-show-advanced"> <span>Show advanced options</span></label>
+                </div>
+                <div class="preset-actions">
+                  <button type="button" class="btn btn-sm btn-ghost" data-builder-preset="basic">Basic host scan</button>
+                  <button type="button" class="btn btn-sm btn-ghost" data-builder-preset="discovery">Host discovery</button>
+                  <button type="button" class="btn btn-sm btn-ghost" data-builder-preset="service">Service detection</button>
+                  <button type="button" class="btn btn-sm btn-ghost" data-builder-preset="fulltcp">Full TCP (1-1000)</button>
+                  <button type="button" class="btn btn-sm btn-ghost" data-builder-preset="udp">UDP top ports</button>
+                </div>
+              </div>
+
+              <div class="builder-group card">
+                <h3>1. Target Configuration</h3>
+                <div class="field-row">
+                  <label>Target type
+                    <select id="target-type">
+                      <option value="single">Single IP address</option>
+                      <option value="hostname">Hostname</option>
+                      <option value="range">IP range</option>
+                      <option value="cidr">CIDR subnet</option>
+                      <option value="multiple">Multiple targets</option>
+                      <option value="file">Input file (-iL)</option>
+                    </select>
+                  </label>
+                  <label>Target
+                    <input type="text" id="target-value" placeholder="192.168.1.10" value="192.168.1.10">
+                  </label>
+                </div>
+                <div id="target-validation" class="validation-msg"></div>
+              </div>
+
+              <div class="builder-group card">
+                <h3>2. Scan Type</h3>
+                <p class="muted small">Select one primary scan type. Some scans require elevated privileges in real environments; this tool explains them conceptually.</p>
+                <div class="option-cards" id="scan-type-cards"></div>
+              </div>
+
+              <div class="builder-group card">
+                <h3>3. Ports</h3>
+                <div class="option-cards compact" id="port-preset-cards"></div>
+                <label class="mt">Custom ports / range
+                  <input type="text" id="port-custom" placeholder="e.g. 22,80,443 or 1-1000">
+                </label>
+                <div class="help-text">Examples: <code>-p 22</code>, <code>-p 22,80,443</code>, <code>-p 1-1000</code>, <code>-p-</code>, <code>--top-ports 100</code></div>
+              </div>
+
+              <div class="builder-group card">
+                <h3>4. Service &amp; Version Detection</h3>
+                <label class="check"><input type="checkbox" id="opt-sv"> <span><strong>-sV</strong> Service detection</span></label>
+                <label>Version intensity (--version-intensity)
+                  <input type="range" id="opt-version-intensity" min="0" max="9" value="7" disabled>
+                  <span class="range-val" id="version-intensity-val">7</span>
+                </label>
+                <label class="check"><input type="checkbox" id="opt-version-all"> <span><strong>--version-all</strong> Aggressive version detection</span></label>
+                <p class="muted small">-sV probes services to identify product and version. Intensity controls probe aggressiveness (0 light, 9 thorough). --version-all is equivalent to intensity 9.</p>
+              </div>
+
+              <div class="builder-group card">
+                <h3>5. OS Detection</h3>
+                <label class="check"><input type="checkbox" id="opt-o"> <span><strong>-O</strong> Enable OS detection</span></label>
+                <label class="check"><input type="checkbox" id="opt-osscan-limit"> <span><strong>--osscan-limit</strong> Limit OS detection to promising targets</span></label>
+                <label class="check"><input type="checkbox" id="opt-osscan-guess"> <span><strong>--osscan-guess</strong> Guess OS more aggressively</span></label>
+                <p class="muted small">OS fingerprinting compares network responses to known signatures; accuracy depends on open/closed ports and host behavior.</p>
+              </div>
+
+              <div class="builder-group card">
+                <h3>6. Timing</h3>
+                <div class="option-cards compact" id="timing-cards"></div>
+                <p class="muted small">Trade-offs: slower templates reduce network impact and can evade simple rate-based detection; faster templates increase speed but may reduce reliability or disrupt fragile services.</p>
+              </div>
+
+              <div class="builder-group card">
+                <h3>7. Output Options</h3>
+                <div class="check-grid">
+                  <label class="check"><input type="checkbox" id="opt-on"> <span><strong>-oN</strong> Normal output</span></label>
+                  <label class="check"><input type="checkbox" id="opt-ox"> <span><strong>-oX</strong> XML output</span></label>
+                  <label class="check"><input type="checkbox" id="opt-og"> <span><strong>-oG</strong> Grepable output</span></label>
+                  <label class="check"><input type="checkbox" id="opt-oa"> <span><strong>-oA</strong> All formats</span></label>
+                  <label class="check"><input type="checkbox" id="opt-v"> <span><strong>-v</strong> Verbose</span></label>
+                  <label class="check"><input type="checkbox" id="opt-vv"> <span><strong>-vv</strong> More verbose</span></label>
+                  <label class="check"><input type="checkbox" id="opt-reason"> <span><strong>--reason</strong> Show reason</span></label>
+                </div>
+                <label class="mt">Output basename (for -oN/-oX/-oG/-oA)
+                  <input type="text" id="opt-output-name" placeholder="scan_results">
+                </label>
+              </div>
+
+              <div class="builder-group card builder-advanced">
+                <h3>8. NSE Script Scanning <span class="badge badge-soft">Advanced</span></h3>
+                <label class="check"><input type="checkbox" id="opt-sc"> <span><strong>-sC</strong> Default scripts (equivalent to --script=default)</span></label>
+                <label>Script category/example (--script)
+                  <select id="opt-script">
+                    <option value="">None</option>
+                    <option value="default">default</option>
+                    <option value="safe">safe</option>
+                    <option value="discovery">discovery</option>
+                    <option value="version">version</option>
+                    <option value="vuln">vuln (authorized lab use only)</option>
+                  </select>
+                </label>
+                <label class="check"><input type="checkbox" id="opt-script-help"> <span><strong>--script-help</strong> Show script help (learning/reference)</span></label>
+                <div class="notice notice-danger small">
+                  <strong>Authorization required:</strong> Intrusive, exploit-oriented, and authentication-testing scripts must only be used with explicit permission in carefully isolated labs. <code>vuln</code> scripts can be disruptive.
+                </div>
+              </div>
+
+              <div class="builder-group card builder-advanced">
+                <h3>9. Firewall &amp; Evasion Concepts <span class="badge badge-soft">Advanced</span></h3>
+                <p class="muted small">These options are presented for defensive understanding and authorized lab analysis. Do not use them to bypass security controls on unauthorized networks.</p>
+                <label class="check"><input type="checkbox" id="opt-f"> <span><strong>-f</strong> Fragment packets</span></label>
+                <label>MTU (--mtu)
+                  <input type="text" id="opt-mtu" placeholder="e.g. 16, 24 (multiple of 8)">
+                </label>
+                <label>Decoys (-D)
+                  <input type="text" id="opt-decoy" placeholder="e.g. RND:5 or decoy1,ME,decoy2">
+                </label>
+                <label>Source port (--source-port)
+                  <input type="text" id="opt-source-port" placeholder="e.g. 53">
+                </label>
+                <p class="muted small">Fragmentation/MTU split probes; decoys obscure origin in logs; source-port selection may interact with firewall rules. Timing also influences detectability. Understand these to design and monitor defenses.</p>
+              </div>
+            </div>
+
+            <div class="builder-output">
+              <div class="sticky-panel">
+                <div class="card terminal-card">
+                  <div class="terminal-header"><span></span><span></span><span></span> generated-command</div>
+                  <pre class="terminal-body command-display"><code id="generated-command"></code></pre>
+                  <div class="command-actions">
+                    <button class="btn btn-primary btn-sm" id="copy-command">Copy Command</button>
+                    <button class="btn btn-ghost btn-sm" id="bookmark-command">Bookmark</button>
+                    <button class="btn btn-ghost btn-sm" id="reset-builder">Reset</button>
+                    <button class="btn btn-ghost btn-sm" id="clear-builder">Clear All</button>
+                  </div>
+                  <div id="builder-warnings" class="warnings"></div>
+                </div>
+                <div class="card" id="command-explanation">
+                  <h3>Command Explanation</h3>
+                  <div id="explanation-content" class="explanation-content"></div>
+                </div>
+                <div class="card">
+                  <h3>Command History</h3>
+                  <ul id="command-history" class="history-list"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="command-reference" class="section">
+          <div class="section-head">
+            <h2>Command Reference</h2>
+            <p>Search and filter Nmap commands, personalize your target, and open details for explanations and examples.</p>
+          </div>
+          <div class="card library-controls ref-controls">
+            <label style="margin:0;">Search commands, flags, concepts
+              <input type="search" id="ref-search" placeholder="e.g. -sS, UDP, OS detection, top ports..." aria-label="Search command reference">
+            </label>
+            <label style="margin:0;">Category
+              <select id="ref-category" aria-label="Filter by category">
+                <option value="all">All Categories</option>
+              </select>
+            </label>
+            <label style="margin:0;">Set your target (IP/domain/range/CIDR)
+              <input type="text" id="ref-target" placeholder="e.g. 127.0.0.1, 192.168.1.10, 192.168.1.0/24" value="192.168.1.10">
+            </label>
+          </div>
+          <div class="card ref-target-row">
+            <label style="margin:0; min-width:220px;">Target preset
+              <select id="ref-target-preset" aria-label="Target preset">
+                <option value="">Choose preset</option>
+                <option value="127.0.0.1">Localhost (127.0.0.1)</option>
+                <option value="192.168.1.10">Fictional host (192.168.1.10)</option>
+                <option value="192.168.1.0/24">Fictional subnet (192.168.1.0/24)</option>
+                <option value="192.168.1.1-50">Fictional range (192.168.1.1-50)</option>
+                <option value="example.local">Example host (example.local)</option>
+              </select>
+            </label>
+            <div class="muted small" style="padding-bottom:0.35rem;">Commands are personalized for copy/paste. Use only on systems you own or have explicit permission to assess.</div>
+          </div>
+          <div id="command-reference-grid" class="library-grid"></div>
+        </section>
+
+        <section id="output-analyzer" class="section">
+          <div class="section-head">
+            <h2>Output Analyzer</h2>
+            <p>Click any line in the simulated output to see details for that specific result (state, service, version, or reason).</p>
+          </div>
+          <div class="analyzer-layout">
+            <div class="card">
+              <div class="analyzer-toolbar" style="align-items:stretch;">
+                <div style="flex:1; min-width:240px; display:grid; gap:0.6rem;">
+                  <label style="margin:0;">Sample scenario
+                    <select id="output-sample-select"></select>
+                  </label>
+                  <label style="margin:0;">Your target (IP/domain/CIDR for copy)
+                    <input type="text" id="popular-scan-target" placeholder="e.g. 127.0.0.1 or 192.168.1.0/24" value="192.168.1.10">
+                  </label>
+                  <label style="margin:0;">Most useful / popular scans (copy & run in your own authorized environment)
+                    <select id="popular-scan-select"></select>
+                  </label>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:0.5rem; justify-content:flex-end;">
+                  <span class="badge badge-sim">Simulated Data</span>
+                  <button class="btn btn-sm btn-primary" id="copy-popular-scan">Copy Popular Scan</button>
+                </div>
+              </div>
+              <div id="popular-scan-desc" class="muted small" style="margin-bottom:0.75rem;"></div>
+              <pre class="terminal-body output-view" id="output-view"></pre>
+            </div>
+            <div class="card" id="output-detail">
+              <h3>Result Details</h3>
+              <div id="output-detail-content" class="muted">Select a highlighted line or port to view details.</div>
+              <div class="port-legend">
+                <span class="pill open">Open</span>
+                <span class="pill closed">Closed</span>
+                <span class="pill filtered">Filtered</span>
+                <span class="pill open|filtered">Open|Filtered</span>
+                <span class="pill unfiltered">Unfiltered</span>
+                <span class="pill unknown">Unknown</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="labs" class="section">
+          <div class="section-head">
+            <h2>Hands-on Labs</h2>
+            <p>Practice Nmap workflows in safe, authorized environments with guided steps and checks.</p>
+          </div>
+          <div class="labs-controls">
+            <button class="chip active" data-lab-filter="all">All</button>
+            <button class="chip" data-lab-filter="Beginner">Beginner</button>
+            <button class="chip" data-lab-filter="Intermediate">Intermediate</button>
+            <button class="chip" data-lab-filter="Advanced">Advanced</button>
+          </div>
+          <div id="labs-grid" class="labs-grid"></div>
+        </section>
+
+        <section id="visualizer" class="section">
+          <div class="section-head">
+            <h2>Network Visualizer</h2>
+            <p>Explore a fictional <code>192.168.1.0/24</code> network. Click devices to inspect simulated ports, services, and connections.</p>
+          </div>
+          <div class="card topology-card">
+            <div class="topology-controls">
+              <button class="btn btn-primary btn-sm" id="viz-play">Play Discovery Animation</button>
+              <button class="btn btn-ghost btn-sm" id="viz-reset">Reset</button>
+              <label class="inline-filter">Filter
+                <select id="viz-filter">
+                  <option value="all">All devices</option>
+                  <option value="open">Has open ports</option>
+                  <option value="filtered">Has filtered ports</option>
+                  <option value="server">Servers</option>
+                </select>
+              </label>
+            </div>
+            <div class="topology-layout">
+              <div class="svg-wrap" id="viz-svg-wrap"></div>
+              <div class="device-panel" id="viz-device-panel"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="quiz" class="section">
+          <div class="section-head">
+            <h2>Quiz and Knowledge Assessment</h2>
+            <p>Test your understanding with 30+ questions across beginner, intermediate, and advanced levels. Progress is saved locally.</p>
+          </div>
+          <div class="quiz-layout">
+            <div class="card quiz-card" id="quiz-card"></div>
+            <div class="card quiz-sidebar">
+              <h3>Your Progress</h3>
+              <div id="quiz-stats"></div>
+              <div class="quiz-levels" id="quiz-levels"></div>
+              <button class="btn btn-ghost btn-sm mt" id="quiz-reset">Reset Quiz Progress</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>Nmap for Hackers and Ethical Security Professionals</strong><br>
+          Zero Trust Academy &mdash; Developed by <a href="https://absshakeel.com" target="_blank" rel="noopener noreferrer">ABS Shakeel</a><br>
+          <a href="https://www.youtube.com/@zerotrust.academy" target="_blank" rel="noopener noreferrer">YouTube: @zerotrust.academy</a>
+        </div>
+        <div class="footer-brand">
+          <img src="assets/images/zta-logo.jpg" alt="Zero Trust Academy logo" class="footer-logo">
+          <div class="tagline">"Learn. Discover. Analyze. Secure."</div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div id="bookmarks-panel" class="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>Bookmarked Commands</h3>
+      <button class="icon-btn" id="bookmarks-close" aria-label="Close bookmarks">&times;</button>
+    </div>
+    <ul id="bookmarks-list" class="history-list"></ul>
+  </div>
+  <div id="detail-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-close-modal="true"></div>
+    <div class="modal-dialog card">
+      <div class="modal-head">
+        <h3 id="modal-title">Details</h3>
+        <button class="icon-btn" id="modal-close" aria-label="Close details">&times;</button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">&#8593;</button>
+
+  <script src="js/storage.js"></script>
+  <script src="js/network-visualizer.js"></script>
+  <script src="js/output-analyzer.js"></script>
+  <script src="js/command-library.js"></script>
+  <script src="js/command-builder.js"></script>
+  <script src="js/labs.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

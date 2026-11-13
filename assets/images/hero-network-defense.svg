@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Nmap Network Discovery and Security Auditing Illustration</title>
+  <desc id="desc">Abstract visualization of network discovery, port scanning, and security analysis across connected systems.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1324"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2dd4bf"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="700" rx="28" fill="url(#bg)"/>
+  <g stroke="#273449" stroke-width="1" opacity="0.7">
+    <path d="M0 100H1200M0 200H1200M0 300H1200M0 400H1200M0 500H1200M0 600H1200M100 0V700M200 0V700M300 0V700M400 0V700M500 0V700M600 0V700M700 0V700M800 0V700M900 0V700M1000 0V700M1100 0V700"/>
+  </g>
+  <g stroke="url(#accent)" stroke-width="3" opacity="0.7" fill="none">
+    <path d="M180 350C320 350 320 180 460 180"/>
+    <path d="M180 350C320 350 320 350 460 350"/>
+    <path d="M180 350C320 350 320 520 460 520"/>
+    <path d="M540 180C680 180 680 120 820 120"/>
+    <path d="M540 350C680 350 680 350 820 350"/>
+    <path d="M540 520C680 520 680 560 820 560"/>
+    <path d="M900 120C980 120 980 220 1060 220"/>
+    <path d="M900 350C980 350 980 350 1060 350"/>
+    <path d="M900 560C980 560 980 470 1060 470"/>
+  </g>
+  <g filter="url(#glow)">
+    <circle cx="180" cy="350" r="38" fill="#141d2f" stroke="#2dd4bf" stroke-width="3"/>
+    <circle cx="460" cy="180" r="30" fill="#141d2f" stroke="#60a5fa" stroke-width="3"/>
+    <circle cx="460" cy="350" r="34" fill="#141d2f" stroke="#60a5fa" stroke-width="3"/>
+    <circle cx="460" cy="520" r="30" fill="#141d2f" stroke="#60a5fa" stroke-width="3"/>
+    <rect x="780" y="80" width="120" height="80" rx="14" fill="#141d2f" stroke="#2dd4bf" stroke-width="3"/>
+    <rect x="780" y="310" width="120" height="80" rx="14" fill="#141d2f" stroke="#fbbf24" stroke-width="3"/>
+    <rect x="780" y="520" width="120" height="80" rx="14" fill="#141d2f" stroke="#60a5fa" stroke-width="3"/>
+    <rect x="1020" y="180" width="120" height="80" rx="14" fill="#141d2f" stroke="#2dd4bf" stroke-width="3"/>
+    <rect x="1020" y="310" width="120" height="80" rx="14" fill="#141d2f" stroke="#60a5fa" stroke-width="3"/>
+    <rect x="1020" y="430" width="120" height="80" rx="14" fill="#141d2f" stroke="#f87171" stroke-width="3"/>
+  </g>
+  <g fill="#e5edf8" font-family="Segoe UI, Arial, sans-serif" font-weight="600" text-anchor="middle">
+    <text x="180" y="345" font-size="16">Analyst</text>
+    <text x="180" y="368" font-size="12" fill="#9fb0c7" font-weight="500">Authorized Scan</text>
+    <text x="460" y="186" font-size="14">Gateway</text>
+    <text x="460" y="356" font-size="14">Switch</text>
+    <text x="460" y="526" font-size="14">Router</text>
+    <text x="840" y="116" font-size="14">Web Server</text>
+    <text x="840" y="138" font-size="12" fill="#99f6e4" font-weight="500">22,80,443 open</text>
+    <text x="840" y="346" font-size="14">Firewall</text>
+    <text x="840" y="368" font-size="12" fill="#fde68a" font-weight="500">Filtered ports</text>
+    <text x="840" y="556" font-size="14">Database</text>
+    <text x="840" y="578" font-size="12" fill="#bfdbfe" font-weight="500">Service detected</text>
+    <text x="1080" y="216" font-size="14">API Host</text>
+    <text x="1080" y="238" font-size="12" fill="#99f6e4" font-weight="500">HTTPS</text>
+    <text x="1080" y="346" font-size="14">Workstation</text>
+    <text x="1080" y="368" font-size="12" fill="#bfdbfe" font-weight="500">Inventory</text>
+    <text x="1080" y="466" font-size="14">Legacy Host</text>
+    <text x="1080" y="488" font-size="12" fill="#fecaca" font-weight="500">Review exposure</text>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="40" y="40" width="360" height="54" rx="12" fill="rgba(20,29,47,0.9)" stroke="#273449"/>
+    <text x="64" y="74" fill="#e5edf8" font-size="22" font-weight="700">Nmap for Hackers &amp; Ethical Security Professionals</text>
+    <rect x="40" y="620" width="520" height="40" rx="10" fill="rgba(20,29,47,0.85)" stroke="#273449"/>
+    <text x="60" y="646" fill="#9fb0c7" font-size="16">Discover hosts • Scan ports • Identify services • Analyze results securely</text>
+  </g>
+  <circle cx="320" cy="350" r="7" fill="#2dd4bf">
+    <animate attributeName="cx" values="220;420;220" dur="4s" repeatCount="indefinite"/>
+  </circle>
+</svg>
