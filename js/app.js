@@ -13,7 +13,14 @@
   function renderFundamentals() {
     const grid = document.getElementById('stages-grid');
     const detail = document.getElementById('stage-detail');
+    const progressBar = document.getElementById('global-progress-bar');
     if (!grid || !detail) return;
+
+    const progress = StorageAPI.getProgress();
+    const totalStages = stages.length;
+    const doneStages = progress.stages ? progress.stages.length : 0;
+    const percent = Math.round((doneStages / totalStages) * 100);
+
     grid.innerHTML = stages.map(s => `
       <div class="card stage-card" data-id="${s.id}" tabindex="0" role="button">
         <div class="stage-num">${s.num}</div>
@@ -39,7 +46,25 @@
       c.addEventListener('click',()=>select(c.dataset.id));
       c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') { e.preventDefault(); select(c.dataset.id); }});
     });
+
+    // Update global progress bar
+    if (progressBar) {
+      progressBar.style.width = percent + '%';
+    }
+
     select(stages[0].id);
+  }
+
+  function renderGlobalProgress() {
+    const bar = document.getElementById('global-progress-bar');
+    const text = document.getElementById('global-progress-text');
+    if (!bar && !text) return;
+    const progress = StorageAPI.getProgress();
+    const total = 8 + 18 + 30; // stages + labs + quiz questions (approx tracking by answered)
+    const done = (progress.stages?.length || 0) + (progress.labs?.length || 0) + (progress.quizzes || 0);
+    const pct = Math.min(100, Math.round((done / total) * 100));
+    if (bar) bar.style.width = pct + '%';
+    if (text) text.textContent = pct + '% complete';
   }
 
   function heroTerminal() {
@@ -67,8 +92,65 @@
     tick();
   }
 
+  function setupTheme() {
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const saved = StorageAPI.load(StorageAPI.KEYS.theme, 'dark');
+    function apply(theme) {
+      root.setAttribute('data-theme', theme);
+      const isLight = theme === 'light';
+      if (btn) {
+        btn.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+        const sun = btn.querySelector('.theme-icon-sun');
+        const moon = btn.querySelector('.theme-icon-moon');
+        if (sun) sun.style.display = isLight ? 'none' : '';
+        if (moon) moon.style.display = isLight ? '' : 'none';
+      }
+    }
+    apply(saved);
+    btn?.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      StorageAPI.save(StorageAPI.KEYS.theme, next);
+      apply(next);
+    });
+  }
+
+  function updateSectionProgress() {
+    const sections = ['fundamentals', 'command-builder', 'command-reference', 'output-analyzer', 'labs', 'visualizer', 'quiz'];
+    let totalSections = sections.length;
+    let completedSections = 0;
+
+    sections.forEach(s => {
+      const dataKey = s.replace('-', '');
+      const progress = StorageAPI.getProgress();
+      if (s === 'fundamentals') {
+        const done = progress.stages ? progress.stages.length : 0;
+        if (done > 0) completedSections++;
+      } else if (s === 'labs') {
+        const done = progress.labs ? progress.labs.length : 0;
+        if (done > 0) completedSections++;
+      } else if (s === 'quiz') {
+        const quizData = StorageAPI.getQuiz();
+        const answered = Object.keys(quizData.answers || {}).length;
+        const total = quizData.answers ? Object.keys(quizData.answers).length : 0;
+        const pct = total > 0 ? Math.round((answered / total) * 100) : 0;
+        if (answered > 0) completedSections++;
+      } else {
+        // For builder, reference, visualizer - mark as started
+        completedSections++;
+      }
+    });
+
+    const percent = Math.round((completedSections / totalSections) * 100);
+    const bar = document.getElementById('global-progress-bar');
+    const text = document.getElementById('global-progress-text');
+    if (bar) bar.style.width = percent + '%';
+    if (text) text.textContent = percent + '% complete';
+  }
+
   function setupNav() {
     const menu = document.getElementById('menu-toggle');
+    renderGlobalProgress();
     const sidebar = document.getElementById('sidebar');
     let overlay = document.querySelector('.sidebar-overlay');
     if (!overlay) {
@@ -175,6 +257,8 @@
   document.addEventListener('DOMContentLoaded', () => {
     try {
       StorageAPI.updateGlobalProgress();
+      updateSectionProgress();
+      renderGlobalProgress();
       renderFundamentals();
       heroTerminal();
       if (NetworkVisualizer.renderVisualizer) NetworkVisualizer.renderVisualizer();
@@ -188,6 +272,7 @@
       Labs.init();
       Quiz.init();
       setupNav();
+      setupTheme();
       setupBookmarksDrawer();
       setupBackToTop();
       setupModal();

@@ -14,9 +14,13 @@
 .hero-points { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: 0.4rem; color: var(--muted); font-size: 0.96rem; }
 .hero-points li { position: relative; padding-left: 1.1rem; }
 .hero-points li::before { content: "•"; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+.hero-stats { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.1rem 0 1.25rem; }
+.hero-stat { flex: 1 1 auto; min-width: 90px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.55rem 0.7rem; display: grid; gap: 0.05rem; }
+.hero-stat strong { color: var(--primary); font-family: var(--mono); font-size: 1.15rem; }
+.hero-stat span { color: var(--muted); font-size: 0.78rem; }
 .hero-highlights { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem; margin: 0.75rem 0 1rem; }
-.highlight-card { background: rgba(20,29,47,0.7); border: 1px solid var(--border); border-radius: 12px; padding: 0.7rem 0.8rem; display: grid; gap: 0.15rem; }
-.highlight-card strong { color: #f3f7ff; font-size: 0.95rem; }
+.highlight-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.7rem 0.8rem; display: grid; gap: 0.15rem; }
+.highlight-card strong { color: var(--text); font-size: 0.95rem; }
 .highlight-card span { color: var(--muted); font-size: 0.85rem; line-height: 1.4; }
 .hero-visual { display: grid; gap: 1rem; align-content: start; }
 .hero-visual-pro { gap: 1rem; }
